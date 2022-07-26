@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.unity3d.player" android:versionCode="1" android:versionName="1.0">
+  <uses-sdk android:minSdkVersion="15" android:targetSdkVersion="29" />
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.RESTART_PACKAGES" />
+  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+  <application>
+    <activity android:name="com.chitu.f1activity.F1Activity" android:screenOrientation="fullSensor" android:launchMode="singleTask" android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density" android:hardwareAccelerated="false">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+      <meta-data android:name="unityplayer.UnityActivity" android:value="true" />
+      <meta-data android:name="android.notch_support" android:value="true" />
+    </activity>
+    <receiver android:name="com.chitu.f1activity.getBroadcast" android:enabled="true" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.PACKAGE_ADDED" />
+        <action android:name="android.intent.action.PACKAGE_CHANGED" />
+        <action android:name="android.intent.action.PACKAGE_REMOVED" />
+        <action android:name="android.intent.action.PACKAGE_REPLACED" />
+        <action android:name="android.intent.action.PACKAGE_RESTARTED" />
+-
+                <action android:name="android.intent.action.PACKAGE_INSTALL" /><data android:scheme="package" /></intent-filter>
+    </receiver>
+    <provider android:name="androidx.core.content.FileProvider" android:authorities="${applicationId}.fileProvider" android:exported="false" android:grantUriPermissions="true">
+      <!--<meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_provider" />-->
+    </provider>
+    <meta-data android:name="unity.splash-mode" android:value="0" />
+    <meta-data android:name="unity.splash-enable" android:value="True" />
+    <meta-data android:name="notch.config" android:value="portrait|landscape" />
+    <meta-data android:name="unity.build-id" android:value="22dd031a-0d87-47e1-870c-3763d0f2a7ed" />
+  </application>
+  <uses-feature android:glEsVersion="0x00030000" />
+  <uses-feature android:name="android.hardware.vulkan.version" android:required="false" />
+  <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+  <uses-feature android:name="android.hardware.touchscreen.multitouch" android:required="false" />
+  <uses-feature android:name="android.hardware.touchscreen.multitouch.distinct" android:required="false" />
+</manifest>
